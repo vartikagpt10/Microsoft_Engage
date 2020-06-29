@@ -1,0 +1,11 @@
+#loss-chart .c3-circles {
+  display: none;
+}
+
+#metric-chart .c3-circles {
+  display: none;
+}
+
+#lr-chart .c3-circles {
+  display: none;
+}

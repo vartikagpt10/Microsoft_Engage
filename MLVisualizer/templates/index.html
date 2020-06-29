@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ML VISUALIZER</title>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dist/css/c3.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/c3_style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/table_style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/decolate_style.css') }}">
+</head>
+<body>
+  <div id="content">
+    <h1>Machine Learning Visualizer</h1>
+    <hr>
+    <div id="hyperparameter-box" class="layout-box">
+      <table id="parameters" class="param-table">
+        <thead id="parameters-head"></thead>
+        <tbody id="parameters-body"></tbody>
+      </table>
+    </div>
+    <div id="chart-box" class="layout-box">
+      <div id="loss-chart" class="chart"></div>
+      <div id="metric-chart" class="chart"></div>
+      <div id="lr-chart" class="chart"></div>
+    </div>
+  </div>
+  <!-- JS Library -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='dist/js/c3.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/split_log.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/json_to_table.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/draw_chart.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/get_show_or_hide.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/select_chart.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/sort_colors.js') }}"></script>
+
+  <!-- JS -->
+  <script>
+    /* ========== general value ========== */
+    var log_data = {{ LOG|tojson }};
+    var d = split_log(log_data, 'data');
+    var loss_data   = d[0];
+    var metric_data = d[1];
+    var lr_data     = d[2];
+
+    /* ========== Socket ========== */
+    $(document).ready(function(){
+      var ws = new WebSocket("ws://{{ HOST }}:{{ PORT }}/socket");
+
+      window.onbeforeunload = function(e) {
+        ws.send('closed');
+        ws.onclose = function () {};
+        ws.close()
+      };
+
+      ws.onmessage = function(msg) {
+        log_data = JSON.parse(msg.data);
+        console.log(log_data)
+        var d_list = split_log(log_data, 'list');
+        var loss_list   = d_list[0];
+        var metric_list = d_list[1];
+        var lr_list     = d_list[2];
+
+        var d = split_log(log_data, 'data');
+        var loss_data   = d[0];
+        var metric_data = d[1];
+        var lr_data     = d[2];
+        loss_chart.load({
+          unload: loss_list,
+          columns: loss_data
+        });
+        metric_chart.load({
+          unload: metric_list,
+          columns: metric_data
+        });
+        lr_chart.load({
+          unload: lr_list,
+          columns: lr_data
+        });
+
+      }
+
+      /* ========== getting hyper parameters and create table ========== */
+      $.ajax({
+        type: 'GET',
+        url: 'parameters',
+        dataType: 'json'
+      }).done(function(data) {
+        console.log(data);
+        var tbl = json_to_table(data);
+        var tbl_head = tbl[0];
+        var tbl_body = tbl[1];
+        $("#parameters-head").html(tbl_head);
+        $("#parameters-body").html(tbl_body);
+      }).fail(function() {
+        console.log('[Error]: Ajax Error')
+        $("#hyperparameter-box").append('<div id="ERROR"><p>ログファイルが存在していることを確認してから、リロードしてください。</p></div>');
+      });
+    });
+
+    /* ========== draw chart ========== */
+    var loss_chart   = draw_chart('#loss-chart', loss_data);
+    var metric_chart = draw_chart('#metric-chart', metric_data);
+    var lr_chart     = draw_chart('#lr-chart', lr_data);
+    var sorted_loss_colors   = sort_colors(loss_chart, 'loss');
+    var sorted_metric_colors = sort_colors(loss_chart, 'metric');
+    var sorted_lr_colors     = sort_colors(loss_chart, 'lr');
+    loss_chart.data.colors(sorted_loss_colors);
+    metric_chart.data.colors(sorted_metric_colors);
+    lr_chart.data.colors(sorted_lr_colors);
+
+    /* ========== select chart ========== */
+    $(document).on('change', 'input[name="parameters"]', function() {
+      var soh = get_show_or_hide('input[name="parameters"]:checked', ['loss', 'metric', 'lr'], log_data);
+      var show_data = soh[0];
+      var hide_data = soh[1];
+      select_chart(loss_chart  , show_data, hide_data);
+      select_chart(metric_chart, show_data, hide_data);
+      select_chart(lr_chart    , show_data, hide_data);
+    });
+  </script>
+</body>
+</html>
+

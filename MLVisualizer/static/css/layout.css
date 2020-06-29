@@ -1,0 +1,16 @@
+#hyperparameter-box {
+width: 30%;
+}
+
+#chart-box {
+width: 80%;
+}
+
+#loss-chart, #metric-chart {
+display: inline-block;
+width: 45%;
+}
+
+#lr-chart {
+width: 30%;
+}
