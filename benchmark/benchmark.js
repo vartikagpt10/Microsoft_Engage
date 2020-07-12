@@ -64,7 +64,7 @@ testCases.forEach(function(test) {
     var scen = scens[id];
     var result = benchmark({
       header: 'AStarFinder',
-      finder: new PF.AStarFinder({allowDiagonal: true}),
+      finder: new PF.BiAStarFinder({allowDiagonal: true}),
       grid: grid,
       startX: scen.startX,
       startY: scen.startY,
