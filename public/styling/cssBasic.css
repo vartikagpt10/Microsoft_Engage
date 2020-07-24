@@ -12,7 +12,7 @@
 
 .start{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image:url(triangletwo-right.svg);
+  background-image:url(Rover-512.webp);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -29,7 +29,7 @@
 
 .instantshortest-path-up{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-up.svg);
+  background:url(Rover-512.webp);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -38,7 +38,7 @@
 
 .shortest-path-up{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-up.svg);
+  background:url(Rover-512.webp);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -55,7 +55,7 @@
 
 .instantshortest-path-down{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-down.svg);
+  background:url(Rover-512.webp);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -64,7 +64,7 @@
 
 .shortest-path-down{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-down.svg);
+  background:url(Rover-512.webp);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -81,7 +81,7 @@
 
 .instantshortest-path-right{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-right.svg);
+  background:url(Rover-512.webp);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -107,7 +107,7 @@
 
 .instantshortest-path-left{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-left.svg);
+  background:url(Rover-512.webp);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -116,7 +116,7 @@
 
 .shortest-path-left{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background:url(triangletwo-left.svg);
+  background:url(Rover-512.webp);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -144,7 +144,7 @@
 .startTransparent{
   /*border: 1px solid rgb(175, 216, 248);*/
   opacity: 0.5;
-  background-image:url(triangletwo-right.svg);
+  background-image:url(Rover-512.webp);
   background-color: rgb(255, 254, 106);
   background-position: center;
   background-repeat: no-repeat;
@@ -161,7 +161,7 @@
 
 .visitedStartNodeBlue {
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image:url(triangletwo-right.svg);
+  background-image:url(Rover-512.webp);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -178,7 +178,7 @@
 
 .visitedStartNodePurple {
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image:url(triangletwo-right.svg);
+  background-image:url(Rover-512.webp);
   /*background-color: rgb(255, 254, 106);*/
   background-position: center;
   background-repeat: no-repeat;
@@ -209,7 +209,7 @@
 }
 
 .visitedTargetNodeBlue {
-  background-image: url(circle.svg);
+  background-image: url(stat.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -224,7 +224,7 @@
 }
 
 .visitedTargetNodePurple {
-  background-image: url(circle.svg);
+  background-image: url(stat.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -718,7 +718,7 @@
 
 .target{
   /*border: 1px solid rgb(175, 216, 248);*/
-  background-image: url(circle.svg);
+  background-image: url(stat.png);
   /*background-color: rgb(255, 254, 106);*/
   /*background-color: rgba(232, 147, 12, 0.75);*/
   background-position: center;
