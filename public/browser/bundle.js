@@ -1191,7 +1191,7 @@ Board.prototype.toggleButtons = function() {
     }
 
     document.getElementById("startButtonClearBoard").onclick = () => {
-      document.getElementById("startButtonAddObject").innerHTML = '<a href="#">Add Bomb</a></li>';
+      document.getElementById("startButtonAddObject").innerHTML = '</li>';
 
 
 
@@ -1280,7 +1280,7 @@ Board.prototype.toggleButtons = function() {
           if (this.target === objectNodeId || this.start === objectNodeId || this.numberOfObjects === 1) {
             console.log("Failure to place object.");
           } else {
-            document.getElementById("startButtonAddObject").innerHTML = '<a href="#">Remove Bomb</a></li>';
+            document.getElementById("startButtonAddObject").innerHTML = '<a href="#">Clear Board</a></li>';
             this.clearPath("clickedButton");
             this.object = objectNodeId;
             this.numberOfObjects = 1;
@@ -1289,7 +1289,7 @@ Board.prototype.toggleButtons = function() {
           }
         } else {
           let objectNodeId = this.object;
-          document.getElementById("startButtonAddObject").innerHTML = '<a href="#">Add Bomb</a></li>';
+          document.getElementById("startButtonAddObject").innerHTML = '<a href="#">Clear Board</a></li>';
           document.getElementById(objectNodeId).className = "unvisited";
           this.object = null;
           this.numberOfObjects = 0;
@@ -2950,3 +2950,4 @@ function weightedManhattanDistance(nodeOne, nodeTwo, nodes) {
 module.exports = weightedSearchAlgorithm;
 
 },{"./astar":13}]},{},[4]);
+

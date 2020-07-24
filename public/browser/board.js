@@ -1060,3 +1060,4 @@ window.onkeydown = (e) => {
 window.onkeyup = (e) => {
   newBoard.keyDown = false;
 }
+
