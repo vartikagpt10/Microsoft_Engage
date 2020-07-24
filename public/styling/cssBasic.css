@@ -289,7 +289,7 @@
 
 #algorithmDescriptor {
   text-align: center;
-  color: #34495e;
+  color: #C1443C;
   padding: 15px 25px 15px 25px;
 }
 
@@ -315,7 +315,7 @@
   background-color: rgba(255, 255, 255, 1);
   width: 50%;
   height: 70%;
-  border: 2px solid #34495e;
+  border: 2px solid #595959;
   border-radius: 4px;
   text-align: center;
   float: right;
@@ -1245,7 +1245,7 @@ h6 small,
 .h4 small,
 .h5 small,
 .h6 small {
-  color: #e7e9ec;
+  color: #595959;
 }
 h1,
 h2,
