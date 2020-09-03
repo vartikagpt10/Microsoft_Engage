@@ -24,3 +24,8 @@ Gateway Heuristic
 The maze and patterns present in the repository were added to test a new heuristic called the Gateway heuristic. The gateway heuristic pre-calculates the distances between entrances/exits of the areas. It also proceeds in two phases.
 Preprocessing Phase:
 The map is decomposed into areas in an identical way as for the dead-end heuristic. We define the boundaries between areas as gateways (or gates). A gateway can be of an arbitrary size, but an artifact of our decomposition algorithm is that its orientation is always either horizontal or vertical. Next we use multiple A* searches to pre-calculate the (static) distance between gates. For each gateway we calculate the path distance to all the other gateways (cost of infinity if no path exists). Alternatively, one could calculate only the distances between gateways within each room and then use a small search to accumulate the total cost during run-time. However, our approach results in more accurate heuristic estimates and faster run-time access
+
+Contributors
+------------
+Vartika Gupta ( https://github.com/vartikagpt10/ )
+Jaya Srivastava ( https://github.com/jaihonikhil/ )
